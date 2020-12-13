@@ -861,7 +861,7 @@ def main():
         help='number of object categories [80]')
     parser.add_argument(
         '-m', '--model', type=str, required=True,
-        help=('[yolov3|yolov3-tiny|yolov3-spp|yolov4|yolov4-tiny]-'
+        help=('[yolov3|yolov3-tiny|yolov3-3l-tiny|yolov4|yolov4-tiny]-'
               '[{dimension}], where dimension could be a single '
               'number (e.g. 288, 416, 608) or WxH (e.g. 416x256)'))
     args = parser.parse_args()
@@ -903,13 +903,13 @@ def main():
     output_tensor_dims = OrderedDict()
     c = (args.category_num + 5) * 3
     if 'yolov3' in args.model:
-        if 'tiny' in args.model:
+        if '3l-tiny' in args.model:
             output_tensor_dims['016_convolutional'] = [c, h // 32, w // 32]
             output_tensor_dims['023_convolutional'] = [c, h // 16, w // 16]
-        elif 'spp' in args.model:
-            output_tensor_dims['089_convolutional'] = [c, h // 32, w // 32]
-            output_tensor_dims['101_convolutional'] = [c, h // 16, w // 16]
-            output_tensor_dims['113_convolutional'] = [c, h //  8, w //  8]
+            output_tensor_dims['030_convolutional'] = [c, h //  8, w //  8]
+        elif 'tiny' in args.model:
+            output_tensor_dims['016_convolutional'] = [c, h // 32, w // 32]
+            output_tensor_dims['023_convolutional'] = [c, h // 16, w // 16]
         else:
             output_tensor_dims['082_convolutional'] = [c, h // 32, w // 32]
             output_tensor_dims['094_convolutional'] = [c, h // 16, w // 16]
