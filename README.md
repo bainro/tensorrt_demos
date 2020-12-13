@@ -8,6 +8,7 @@ python3 yolo_to_onnx.py -m yolov3-3l-tiny-864x480
 ```
 
 That should spit out a yolov3-3l-tiny.onnx model file which can be converted to a trt model the same way rektnet is, i.e. onnx2trt on one of the Xaviers.
+This script requires that the darknet cfg and weights file have the same name, i.e. yolov3-3l-tiny.weights and yolov3-3l-tiny.cfg.
 
 # tensorrt_demos
 
