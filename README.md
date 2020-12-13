@@ -1,3 +1,14 @@
+# notes for Stephen
+
+Example use to convert yolo weights and cfg file into an onnx one:
+
+```
+cd yolo
+python3 yolo_to_onnx.py -m yolov3-3l-tiny-864x480
+```
+
+That should spit out a yolov3-3l-tiny.onnx model file which can be converted to a trt model the same way rektnet is, i.e. onnx2trt on one of the Xaviers.
+
 # tensorrt_demos
 
 Examples demonstrating how to optimize caffe/tensorflow/darknet models with TensorRT and run inferencing on NVIDIA Jetson or x86_64 PC platforms.
